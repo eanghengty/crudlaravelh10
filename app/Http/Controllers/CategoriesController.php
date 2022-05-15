@@ -15,7 +15,7 @@ class CategoriesController extends Controller
         return view('layouts.show')->with('category',$category);
     }
     public function index(){
-        $post=Post::all();
+        $post=Post::paginate(10);
         
         return view('layouts.index')->with('post',$post);
     }
@@ -43,5 +43,25 @@ class CategoriesController extends Controller
          $post->save();
          return redirect('/');
      }
+     public function update(Request $req){
+        $update=Post::findOrFail($req->id);
+        // $update = Post::findOrFail($id);
+
+        // $update->title=request('title');
+        // $update->description=request('description');
+        $update->title=$req->title;
+        $update->description=$req->description;
+
+        $update->save();
+        // dd($update);
+    return  redirect('/');
+
+    
+}
+public function showUpdate($id){
+        $data = Post::find($id);
+        return view('layouts.update',['data'=>$data]);
+    }
+
          
 }

@@ -1,9 +1,10 @@
 @extends('layouts.app')
-@section('title','create - post')
+@section('title','update - post')
 @section('content')
 <div class="create-1">
-	<form  action="{{route('layouts.store')}}" method="POST">
+	<form method="POST" action="{{route('layouts.updated')}}">
 	@csrf
+	<input type="hidden" name="id" value="{{$data['id']}}">
 	<div class="create-2">
 		<label>Title</label>
 		<input type="text" name="title"></input>
@@ -13,14 +14,7 @@
 		<input type="text" name="description"></input>
 	</div>
 	<div class="create-2">
-	<label>Categories</label>
-	<select id="type" name="category_id">
-    <option value="1">places</option>
-    <option value="2">Memes</option>
-	</select>
-	</div>
-	<div class="create-2">
-		<button type="submit">create post</button>
+		<button type="submit">update post</button>
 	</div>
 
 

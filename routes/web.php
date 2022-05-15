@@ -24,4 +24,6 @@ Route::get('/',[App\Http\Controllers\CategoriesController::class,'index'])->name
 Route::delete('/post/{id}',[App\Http\Controllers\CategoriesController::class,
 'destroy'])->name('layouts.destroy')->middleware('auth');
 Route::get('/create',[App\Http\Controllers\CategoriesController::class, 'create'])->name('layouts.create')->middleware('auth');
-Route::post('/',[App\Http\Controllers\CategoriesController::class,'store'])->name('layouts.store')->middleware('auth');
+Route::post('/create',[App\Http\Controllers\CategoriesController::class,'store'])->name('layouts.store')->middleware('auth');
+Route::get('/update/{id}',[App\Http\Controllers\CategoriesController::class,'showUpdate'])->name('layouts.update');
+Route::post('/update',[App\Http\Controllers\CategoriesController::class,'update'])->name('layouts.updated');
